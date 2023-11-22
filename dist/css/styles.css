@@ -1,3 +1,53 @@
+.auction-icon {
+  max-height: 100px;
+  max-width: 100px;
+}
 
+.header_p {
+  margin: 0;
+}
+
+:root {
+  --color-header-footer: #4374d3;
+}
+
+header, footer {
+  background-color: var(--color-header-footer);
+}
+
+h1 {
+  text-align: center;
+}
+
+.anchors a {
+  color: black;
+}
+
+.btn {
+  max-width: fit-content;
+}
+
+.icons > a {
+  max-width: 35px;
+  transition: 0.3s;
+}
+.icons > a:hover {
+  transition: 0.3s;
+  transform: scale(1.1);
+}
+
+.footer p {
+  font-size: 1.1rem;
+  text-align: left;
+}
+
+.copyright-text {
+  font-size: 1.4rem;
+}
+
+.fa-brands {
+  font-size: 2rem;
+  color: black;
+}
 
 /*# sourceMappingURL=styles.css.map */
