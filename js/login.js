@@ -14,7 +14,7 @@ async function submitUser() {
     const response = await login(loginURL, loginDetails);
 
     if (response.accessToken) {
-        window.location.href = 'profile.html';
+        window.location.href = 'profile/index.html';
     } else {
         console.log('No access token found');
     }
