@@ -42,7 +42,7 @@ async function login(url, loginDetails) {
             console.log('No access token found');
         }
         localStorage.setItem('email', response.email);
-        localStorage.setItem('username', response.name);
+        localStorage.setItem('name', response.name);
         return response;
     } catch (error) {
         console.log(error);
