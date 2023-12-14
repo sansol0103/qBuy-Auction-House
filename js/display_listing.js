@@ -53,6 +53,11 @@ function createHTML(listing) {
     content.innerText = listing.description;
     textContainer.appendChild(content);
 
+    const bids = document.createElement('p');
+    bids.innerText = 'Bids: ' + listing._count.bids;
+    bids.classList.add('mt-3');
+    textContainer.appendChild(bids);
+
     pageTitle.innerText += listing.title;
 };
 
