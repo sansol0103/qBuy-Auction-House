@@ -4,6 +4,7 @@ import { dataFetch } from "./utils/dataFetch.mjs";
 import { token } from "./utils/components.mjs";
 import { userId } from "./utils/components.mjs";
 import { createListing } from "./create_listing.mjs";
+import { displayPersonalListings } from "./display_user_listings.mjs";
 
 const pageTitle = document.querySelector("title");
 
@@ -59,19 +60,14 @@ async function displayProfile() {
 
 displayProfile();
 
-const createListingForm = document.querySelector("#create_listing_form");
+displayPersonalListings();
 
-console.log(createListingForm);
+const createListingForm = document.querySelector("#create_listing_form");
 
 const listingTitle = document.querySelector("#listingTitle");
 const listingDeadlineDate = document.querySelector("#listingDeadlineDate");
 const listingMedia = document.querySelector("#listingMedia");
 const listingDescription = document.querySelector("#listingDescription");
-
-console.log(listingTitle.value);
-console.log(listingDeadlineDate.value);
-console.log(listingMedia.value);
-console.log(listingDescription.value);
 
 createListingForm.addEventListener("submit", async (event) => {
     event.preventDefault();
