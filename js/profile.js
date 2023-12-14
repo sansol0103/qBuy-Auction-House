@@ -1,7 +1,9 @@
 import { profilesURL } from "./utils/urls.mjs";
+import { listingsURL } from "./utils/urls.mjs";
 import { dataFetch } from "./utils/dataFetch.mjs";
 import { token } from "./utils/components.mjs";
 import { userId } from "./utils/components.mjs";
+import { createListing } from "./create_listing.mjs";
 
 const pageTitle = document.querySelector("title");
 
@@ -56,6 +58,49 @@ async function displayProfile() {
 };
 
 displayProfile();
+
+const createListingForm = document.querySelector("#create_listing_form");
+
+console.log(createListingForm);
+
+const listingTitle = document.querySelector("#listingTitle");
+const listingDeadlineDate = document.querySelector("#listingDeadlineDate");
+const listingMedia = document.querySelector("#listingMedia");
+const listingDescription = document.querySelector("#listingDescription");
+
+console.log(listingTitle.value);
+console.log(listingDeadlineDate.value);
+console.log(listingMedia.value);
+console.log(listingDescription.value);
+
+createListingForm.addEventListener("submit", async (event) => {
+    event.preventDefault();
+
+    const title = listingTitle.value;
+    const deadlineDate = listingDeadlineDate.value;
+    const media = listingMedia.value;
+    const description = listingDescription.value;
+
+    const listingData = {
+        title: title,
+        endsAt: deadlineDate,
+        media: media,
+        description: description,
+    }
+
+    const data = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(listingData),
+    };
+
+    const response = await createListing(listingsURL, data);
+    console.log(response);
+    window.location.reload();
+});
 
 const logOutButton = document.querySelector("#logout_button");
 
