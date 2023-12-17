@@ -2,11 +2,14 @@ import { listingsURL } from './utils/urls.mjs'
 import { getQueryString } from './utils/components.mjs'
 import { token } from './utils/components.mjs'
 import { dataFetch } from './utils/dataFetch.mjs'
+import { placeBid } from './bid.mjs'
+
+const listingId = getQueryString('id');
+const bidsURL = listingsURL + listingId + '/bids';
 
 const pageTitle = document.querySelector('title');
 
 async function getListing(url) {
-    const listingId = getQueryString('id');
     try {
         const data = {
             method: 'GET',
@@ -58,7 +61,7 @@ function createHTML(listing) {
     bids.classList.add('mt-3');
     textContainer.appendChild(bids);
 
-    pageTitle.innerText += listing.title;
+    pageTitle.innerText += ` ` + listing.title;
 };
 
 async function displayListing() {
@@ -67,3 +70,28 @@ async function displayListing() {
 };
 
 displayListing();
+
+const bidForm = document.querySelector('#bidForm');
+const bidInput = document.querySelector('#bidInput');
+
+bidForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
+
+    const bidData = {
+        bid: bidInput.value,
+    };
+
+    const data = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(bidData),
+        };
+
+    const result = await placeBid(bidsURL, data);
+    if (result) {
+        window.location.reload();
+    }
+});
