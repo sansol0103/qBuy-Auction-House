@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>qBuy | </title>
+    <script src="https://kit.fontawesome.com/90b4883912.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../dist/css/styles.css">
+    <script type="module" src="../js/profile.js"></script>
+</head>
+<body>
+    <header class="container-fluid">
+        <div class="d-flex flex-wrap justify-content-center py-3 mb-4">
+            <a class="d-flex align-items-center mb-md-0 me-md-auto text-dark text-decoration-none fs-3 ms-2" href="index.html">
+                <img src="../images/auction_hammer.webp" alt="Picture of a hammer used in an auction. Logo for the site" class="img-fluid mx-3 auction-icon">
+                <div>
+                    <p class="header_p fs-1">qBuy</p>
+                    <p class="header_p">You buy, we deliver</p>
+                </div>
+                <nav class="nav nav-pills">
+                    <li class="nav-item">
+                        <a href="../listings/index.html" class="nav-link">Listings</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="index.html" class="nav-link">Profile</a>
+                    </li>
+                </nav>
+            </a>
+        </div>
+    </header>
+    <main>
+        <button id="logout_button" class="my-3 mx-3 btn btn-secondary">Log out</button>
+        <div class="container">
+            <div class="row d-flex flex-column justify-content-center">
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <h2>Profile Info</h2>
+                            <div class="d-flex m-auto justify-content-center" id="avatarContainer"></div>
+                            <div id="userContainer"></div>
+                            <button class="btn btn-primary mt-3" id="updateAvatarButton">Click here to update your profile picture</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body" id="listingsContainer">
+                            <h1>Your listings</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-body">
+                            <form id="create_listing_form">
+                                <div>
+                                    <label for="listingTitle" class="form-label">Listing title</label>
+                                    <input type="text" id="listingTitle" class="form-control" placeholder="Listing title">
+                                    <label for="listingDeadlineDate" class="form-label">Deadline date</label>
+                                    <input type="date" id="listingDeadlineDate" class="form-control">
+                                    <label for="listingMedia" class="form-label">Media (optional)</label>
+                                    <input type="text" id="listingMedia" class="form-control" placeholder="Add a link to an image">
+                                    <label for="listingDescription" class="form-label">Description</label>
+                                    <textarea name="description" id="listingDescription" class="form-control" placeholder="Add your description here"></textarea>
+                                </div>
+                                <button class="btn btn-lg btn-secondary mt-3">Create new post</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="d-flex flex-wrap justify-content-between align-items-center py-3 footer-no-stretch">
+            <div class="col-md-4 d-flex align-items-center">
+                <p class="mb-md-0 text-muted copyright-text">Copyright &copy;</p>
+            </div>
+            <div class="nav col-md-4 justify-content-end list-unstyled d-flex icons">
+                <a class="ms-3 text-decoration-none fs-4" href="https://instagram.com"
+                    ><i class="fa-brands fa-instagram text-dark"></i
+                ></a>
+                <a class="ms-3 text-decoration-none fs-4" href="https://facebook.com"
+                    ><i class="fa-brands fa-facebook text-dark"></i
+                ></a>
+                <a class="ms-3 text-decoration-none fs-4" href="https://twitter.com"
+                    ><i class="fa-brands fa-twitter text-dark"></i
+                ></a>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
