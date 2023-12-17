@@ -5,6 +5,7 @@ import { token } from "./utils/components.mjs";
 import { userId } from "./utils/components.mjs";
 import { createListing } from "./create_listing.mjs";
 import { displayPersonalListings } from "./display_user_listings.mjs";
+import { updateAvatar } from "./update_avatar.mjs";
 
 const pageTitle = document.querySelector("title");
 
@@ -96,6 +97,57 @@ createListingForm.addEventListener("submit", async (event) => {
     const response = await createListing(listingsURL, data);
     console.log(response);
     window.location.reload();
+});
+
+const updateAvatarButton = document.querySelector("#updateAvatarButton");
+
+updateAvatarButton.addEventListener("click", () => {
+    const modalContainer = document.createElement("div");
+    modalContainer.classList.add('modal-container');
+
+    const modalForm = document.createElement("form");
+    modalForm.classList.add('inline-form', 'modal-form');
+    modalContainer.append(modalForm);
+
+    const modalTitle = document.createElement("h2");
+    modalTitle.classList.add('text-white', 'mx-3');
+    modalTitle.innerText = "Update Avatar";
+    modalForm.append(modalTitle);
+
+    const modalInput = document.createElement("input");
+    modalInput.classList.add('form-control', 'mx-3');
+    modalInput.setAttribute("type", "text");
+    modalInput.setAttribute("placeholder", "Avatar URL");
+    modalInput.setAttribute("required", true);
+    modalForm.append(modalInput);
+
+    const modalButton = document.createElement("button");
+    modalButton.classList.add('btn', 'btn-primary', 'mx-3');
+    modalButton.setAttribute("type", "submit");
+    modalButton.innerText = "Update Avatar";
+    modalForm.append(modalButton);
+
+    const modalCloseButton = document.createElement("button");
+    modalCloseButton.classList.add('btn', 'btn-secondary', 'mx-3');
+    modalCloseButton.setAttribute("type", "button");
+    modalCloseButton.innerText = "Close";
+    modalCloseButton.addEventListener("click", () => {
+        modalContainer.remove();
+    });
+    modalForm.append(modalCloseButton);
+
+    document.body.append(modalContainer);
+
+    modalForm.addEventListener("submit", async (event) => {
+        event.preventDefault();
+
+        const avatar = modalInput.value;
+
+        const response = await updateAvatar(avatar);
+        console.log(response);
+        window.location.reload();
+        modalContainer.remove();
+    });
 });
 
 const logOutButton = document.querySelector("#logout_button");
